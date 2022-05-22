@@ -1,17 +1,21 @@
 <template>
   <header>
     <div class="container d-flex justify-content-center align-items-center">
-      <div class="brand d-flex">
-        <div class="logo">
-          <img
-            src="../../public/logo-header.png"
-            alt=""
-          >
+      <router-link
+        to="/rooms"
+      >
+        <div class="brand d-flex">
+          <div class="logo">
+            <img
+              src="../../public/logo-header.png"
+              alt=""
+            >
+          </div>
+          <h1 class="title">
+            GOOD SHEPHERD<br><small>MANOR</small>
+          </h1>
         </div>
-        <h1 class="title">
-          GOOD SHEPHERD<br><small>MANOR</small>
-        </h1>
-      </div>
+      </router-link>
       <!-- <nav class="nav">
         <label class="navbar-toggle-label hamburger d-flex align-items-center justify-content-center" for="navbar-toggle">
         </label>
@@ -21,13 +25,16 @@
           <a href="/about"><li class="nav-item"><p>會員中心</p></li></a>
         </ul>
       </nav> -->
+      <Navbar />
     </div>
   </header>
 </template>
 
 <script>
+import Navbar from './Navbar.vue'
 export default {
-  name: 'Header'
+  name: 'Header',
+  components: { Navbar }
 }
 </script>
 
@@ -41,13 +48,17 @@ export default {
   border: 1px solid #F9F9F9;
 }
 header {
-  position: fixed;
+  // position: fixed;
+  position: static;
   background-color: rgba($color: #7E9791, $alpha: 0.1);
+  padding: 0;
+  margin: 0;
   height: 96px;
   width: 100%;
   .container {
     height: 100%;
     width: 100%;
+    padding: 0 120px;
   }
 }
 .brand {

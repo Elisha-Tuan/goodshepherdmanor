@@ -10,14 +10,23 @@
     </a>
     <div class="card-info d-flex flex-column justify-content-start">
       <a href="/room">
-        <p class="title">{{ room_title }} 教室名稱教師名稱</p>
+        <p class="title">{{ room.title }}</p>
       </a>
       <div class="room-description">
         <div class="headCount">
-          <p>適合人數：6-10人</p>
+          <p>適合人數：{{ room.headCount }}人</p>
         </div>
         <div class="usage">
-          <p>適合用途：會議 小組 聚餐</p>
+          <p>
+            適合用途：
+            <span
+              v-for="item in room.usage"
+              :key="item.index
+              "
+            >
+              {{ item }}
+            </span>
+          </p>
         </div>
       </div>
       <button class="rental">
@@ -31,11 +40,15 @@
 export default {
   name: 'Card',
   props: {
-    blogId: String,
-    blogImage: String,
-    blogTitle: String,
-    blogOnlineDate: String,
-    blogContent: String
+    initialRoom: {
+      type: Object,
+      required: true
+    }
+  },
+  data () {
+    return {
+      room: this.initialRoom
+    }
   }
 }
 </script>

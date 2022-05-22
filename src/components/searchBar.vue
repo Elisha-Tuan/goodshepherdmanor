@@ -47,11 +47,13 @@ export default {
 @import "../assets/scss/_base.scss";
 @import "../assets/scss/reset.scss";
 .searchBar-wrapper {
+  margin: 46px auto 0;
   border: 1px solid #D1D5DB;
   box-sizing: border-box;
   border-radius: 100px;
   overflow: hidden;
   background: #F8F9FA;
+  width: 800px;
 }
 .during {
   padding: 18px 27px 18px 41px;
