@@ -153,8 +153,8 @@ export default {
 </script>
 
 <style lang="scss">
-// @import "./assets/scss/_base.scss";
-// @import "./assets/scss/reset.scss";
+@import "../assets/scss/_base.scss";
+@import "../assets/scss/reset.scss";
 #app {
   height: 100%;
 }

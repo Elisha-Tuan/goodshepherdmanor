@@ -12,6 +12,7 @@
     "masonry-layout": "^4.2.2",
     "vue": "^2.6.11",
     "vue-awesome-datepicker": "^1.1.1",
+    "vue-concise-slider": "^4.2.5",
     "vue-functional-calendar": "^2.9.93",
     "vue-mj-daterangepicker": "^0.1.11",
     "vue-router": "^3.5.1",
