@@ -101,15 +101,13 @@ export default {
   },
   methods: {
     handleSubmit (e) {
-      const data = JSON.stringify({
-        name: this.name,
-        email: this.email,
-        password: this.password,
-        passwordCheck: this.passwordCheck
-      })
-
+      // const data = JSON.stringify({
+      //   name: this.name,
+      //   email: this.email,
+      //   password: this.password,
+      //   passwordCheck: this.passwordCheck
+      // })
       // TODO: 向後端驗證使用者登入資訊是否合法
-      console.log('data', data)
     }
   }
 }

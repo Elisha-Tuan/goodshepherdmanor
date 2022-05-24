@@ -3,14 +3,14 @@
     <a href="/room">
       <div class="card-img">
         <img
-          src="../../public/room.jpg"
+          :src="room.img || '../../public/room.jpg'"
           alt=""
         >
       </div>
     </a>
     <div class="card-info d-flex flex-column justify-content-start">
       <a href="/room">
-        <p class="title">{{ room.title }}</p>
+        <p class="title">{{ room.name }}</p>
       </a>
       <div class="room-description">
         <div class="headCount">
@@ -29,9 +29,12 @@
           </p>
         </div>
       </div>
-      <button class="rental">
+      <router-link
+        :to="{ name: 'room', params: { id: room.id } }"
+        class="rental"
+      >
         租借場地
-      </button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -96,7 +99,7 @@ export default {
             height: 46px;
             background-color: #7E9791;
             border-radius: 4px;
-            @include font-setting('Noto Serif TC', normal, 600, 18px, 26px, #F8F9FA);
+            @include font-setting('Noto Serif TC', normal, 600, 18px, 46px, #F8F9FA);
             letter-spacing: 0.025em;
         }
     }

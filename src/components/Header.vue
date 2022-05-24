@@ -48,8 +48,7 @@ export default {
   border: 1px solid #F9F9F9;
 }
 header {
-  // position: fixed;
-  position: static;
+  position: relative;
   background-color: rgba($color: #7E9791, $alpha: 0.1);
   padding: 0;
   margin: 0;
@@ -62,9 +61,13 @@ header {
   }
 }
 .brand {
+  position: absolute;
   // margin: 0 auto;
   // width: 294px;
   height: 45px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   .logo {
     margin-right: 9px;
     img {

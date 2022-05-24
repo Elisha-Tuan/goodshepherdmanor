@@ -5,7 +5,6 @@
   >
     <div id="main-container">
       <SearchBar />
-      <a href="/room">HHHHHHHHHHH</a>
       <div class="wrapper-card">
         <Card
           v-for="room in rooms"
@@ -31,54 +30,74 @@ import SearchBar from '@/components/searchBar.vue'
 const dummyData = {
   rooms: [
     {
-      title: '教室一',
+      id: 1,
+      name: '教室一',
       headCount: '6-10',
-      usage: ['會議', '小組', '聚餐']
+      usage: ['會議', '小組', '聚餐'],
+      img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171'
     },
     {
-      title: '教室二',
+      id: 2,
+      name: '教室二',
       headCount: '6-10',
-      usage: ['會議', '小組', '聚餐']
+      usage: ['會議', '小組', '聚餐'],
+      img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=958'
     },
     {
-      title: '教室三',
+      id: 3,
+      name: '教室三',
       headCount: '6-10',
-      usage: ['會議', '小組', '聚餐']
+      usage: ['會議', '小組', '聚餐'],
+      img: 'https://images.unsplash.com/photo-1589834390005-5d4fb9bf3d32?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387'
     },
     {
-      title: '教室四',
+      id: 4,
+      name: '教室四',
       headCount: '6-10',
-      usage: ['會議', '小組', '聚餐']
+      usage: ['會議', '小組', '聚餐'],
+      img: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170'
     },
     {
-      title: '教室五',
+      id: 5,
+      name: '教室五',
       headCount: '6-10',
-      usage: ['會議', '小組', '聚餐']
+      usage: ['會議', '小組', '聚餐'],
+      img: 'https://images.unsplash.com/photo-1481277542470-605612bd2d61?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1106'
     },
     {
-      title: '教室六',
+      id: 6,
+      name: '教室六',
       headCount: '6-10',
-      usage: ['會議', '小組', '聚餐']
+      usage: ['會議', '小組', '聚餐'],
+      img: 'https://images.unsplash.com/photo-1486304873000-235643847519?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332'
     },
     {
-      title: '教室七',
+      id: 7,
+      name: '教室七',
       headCount: '6-10',
-      usage: ['會議', '小組', '聚餐']
+      usage: ['會議', '小組', '聚餐'],
+      img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170'
     },
     {
-      title: '教室八',
+      id: 8,
+      name: '教室八',
       headCount: '6-10',
-      usage: ['會議', '小組', '聚餐']
+      usage: ['會議', '小組', '聚餐'],
+      img: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170'
     },
     {
-      title: '教室九',
+      id: 9,
+      name: '教室九',
       headCount: '6-10',
-      usage: ['會議', '小組', '聚餐']
+      usage: ['會議', '小組', '聚餐'],
+      img: 'https://images.unsplash.com/photo-1560448205-4d9b3e6bb6db?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170'
     },
     {
-      title: '教室十',
+      id: 10,
+      name: '教室十',
       headCount: '6-10',
-      usage: ['會議', '小組', '聚餐']
+      usage: ['會議', '小組', '聚餐'],
+      img: 'https://images.unsplash.com/photo-1463797221720-6b07e6426c24?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171'
     }
   ],
   categories: [
@@ -146,8 +165,7 @@ export default {
   // margin-bottom: 30px;
 }
 .wrapper-card {
-  padding: 0 120px;
-  margin-bottom: 69px;
+  padding: 54px 120px;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+  <nav class="navbar d-flex justify-content-end">
     <button
       class="navbar-toggler"
       type="button"
@@ -29,7 +29,7 @@
         <!-- 登入過後 管理員&使用者都會看到 -->
         <template v-if="isAuthenticated">
           <router-link
-            to="faq"
+            to="/faq"
             class="faq-btn"
           >
             常見問題
@@ -49,13 +49,13 @@
         </template>
         <template v-else>
           <router-link
-            to="faq"
+            to="/faq"
             class="faq-btn"
           >
             常見問題
           </router-link>
           <router-link
-            to="signin"
+            to="/signin"
             class="signIn-btn"
           >
             登入
@@ -111,11 +111,14 @@ export default {
 <style scoped lang="scss">
 @import "../assets/scss/_base.scss";
 @import "../assets/scss/reset.scss";
+.navbar {
+  width: 100%;
+}
 .faq-btn {
   margin-right: 16px;
   width: 110px;
   height: 46px;
-  background: #F2F5F4;
+  // background: #F2F5F4;
   border: 1px solid #7E9791;
   border-radius: 4px;
   @include font-setting('Noto Serif TC', normal, 600, 18px, 46px, #7E9791);

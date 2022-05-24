@@ -33,7 +33,7 @@ export default {
   padding: 0;
   margin: 0;
   min-height: 100%;
-  overflow-y: scroll;
+  // overflow-y: scroll;
 }
 .main {
   flex: 1;

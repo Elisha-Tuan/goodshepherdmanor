@@ -71,11 +71,10 @@ export default {
   },
   methods: {
     handleSubmit () {
-      const data = JSON.stringify({
-        email: this.email,
-        password: this.password
-      })
-      console.log('data', data)
+      // const data = JSON.stringify({
+      //   email: this.email,
+      //   password: this.password
+      // })
     }
   }
 }
