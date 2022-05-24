@@ -84,16 +84,56 @@
             />
           </div>
           <div class="rental-period">
-            <label for="">
-              <input type="checkbox">
-            </label>
+            <div class="time d-flex">
+              <p class="originalFontStyle">
+                租借時段 (可複選)：
+              </p>
+              <label
+                for=""
+                class="mr-3"
+                @click="changePeriod(morning)"
+              >
+                <input
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">上午</span>
+              </label>
+              <label
+                for=""
+                class="mr-3"
+                @click="changePeriod(noon)"
+              >
+                <input
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">下午</span>
+              </label>
+              <label
+                for=""
+                @click="changePeriod(night)"
+              >
+                <input
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">晚上</span>
+              </label>
+            </div>
+            <template v-if="rentalPeriod = 'morning'">
+              <label for="">
+                <input type="checkbox">
+                <span>晚上</span>
+              </label>
+            </template>
           </div>
         </div>
       </div>
     </div>
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.053119457709!2d121.60187201599136!3d25.100063141791864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442add9a2c10a43%3A0xc7c0a2ded7d590d3!2z5aW954mn5Lq66I6K5ZyS!5e0!3m2!1szh-TW!2stw!4v1652838585532!5m2!1szh-TW!2stw"
-      style="border:0;"
+      style="border: 0; margin: 0;"
       allowfullscreen=""
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
@@ -112,6 +152,7 @@ export default {
   },
   data () {
     return {
+      rentalPeriod: '',
       calendarData: {},
       // Image list
       someList: [
@@ -185,6 +226,9 @@ export default {
     // }, 2000)
   },
   methods: {
+    changePeriod (period) {
+      this.rentalPeriod = period
+    }
   }
 }
 </script>
@@ -194,6 +238,10 @@ export default {
 @import "../assets/scss/reset.scss";
 #app {
   height: 100%;
+  padding: 0;
+}
+.main {
+  padding: 0;
 }
 .main-container {
   height: 100%;
@@ -231,6 +279,33 @@ export default {
     }
     .accommodation {
       margin-bottom: 10px;
+    }
+  }
+}
+.rental-period {
+  .time {
+    input[type=checkbox] {
+      display: none;
+    }
+    input[type=checkbox]:checked + .button {
+      background-color: green;
+      color: #FFFFFF;
+    }
+    .button {
+      width: 84px;
+      height: 43px;
+      display: inline-block;
+      background: #fff;
+      color: #333;
+      cursor: pointer;
+    }
+    .button:hover {
+      background: #bbb;
+      color: #fff;
+    }
+    .round {
+      border: 1px solid #E4E8EB;
+      border-radius: 4px;
     }
   }
 }
