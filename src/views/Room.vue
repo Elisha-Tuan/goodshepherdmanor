@@ -84,49 +84,172 @@
             />
           </div>
           <div class="rental-period">
-            <div class="time d-flex">
+            <div class="time d-flex align-items-center">
               <p class="originalFontStyle">
                 租借時段 (可複選)：
               </p>
               <label
-                for=""
+                for="morning"
                 class="mr-3"
-                @click="changePeriod(morning)"
+                @click="changePeriod('morning')"
               >
                 <input
-                  type="checkbox"
+                  id="morning"
+                  type="radio"
                   name="variety"
                 >
                 <span class="round button">上午</span>
               </label>
               <label
-                for=""
+                for="noon"
                 class="mr-3"
-                @click="changePeriod(noon)"
+                @click="changePeriod('noon')"
               >
                 <input
-                  type="checkbox"
+                  id="noon"
+                  type="radio"
                   name="variety"
                 >
                 <span class="round button">下午</span>
               </label>
               <label
-                for=""
-                @click="changePeriod(night)"
+                for="night"
+                @click="changePeriod('night')"
               >
                 <input
-                  type="checkbox"
+                  id="night"
+                  type="radio"
                   name="variety"
                 >
                 <span class="round button">晚上</span>
               </label>
             </div>
-            <template v-if="rentalPeriod = 'morning'">
-              <label for="">
-                <input type="checkbox">
-                <span>晚上</span>
+            <div
+              v-if="rentalPeriod === 'morning'"
+              class="during d-flex"
+            >
+              <label for="8-9">
+                <input
+                  id="8-9"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">8:00 - 9:00</span>
               </label>
-            </template>
+              <label for="9-10">
+                <input
+                  id="9-10"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">9:00 - 10:00</span>
+              </label>
+              <label for="10-11">
+                <input
+                  id="10-11"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">10:00 - 11:00</span>
+              </label>
+              <label for="11-12">
+                <input
+                  id="11-12"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">11:00 - 12:00</span>
+              </label>
+            </div>
+            <div
+              v-if="rentalPeriod === 'noon'"
+              class="during d-flex"
+            >
+              <label for="12-13">
+                <input
+                  id="12-13"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">12:00 - 13:00</span>
+              </label>
+              <label for="13-14">
+                <input
+                  id="13-14"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">13:00 - 14:00</span>
+              </label>
+              <label for="14-15">
+                <input
+                  id="14-15"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">14:00 - 15:00</span>
+              </label>
+              <label for="15-16">
+                <input
+                  id="15-16"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">15:00 - 16:00</span>
+              </label>
+              <label for="17-18">
+                <input
+                  id="17-18"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">17:00 - 18:00</span>
+              </label>
+            </div>
+            <div
+              v-if="rentalPeriod === 'night'"
+              class="during d-flex"
+            >
+              <label for="18-19">
+                <input
+                  id="18-19"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">18:00 - 19:00</span>
+              </label>
+              <label for="19-20">
+                <input
+                  id="19-20"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">19:00 - 20:00</span>
+              </label>
+              <label for="20-21">
+                <input
+                  id="20-21"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">20:00 - 21:00</span>
+              </label>
+              <label for="21-22">
+                <input
+                  id="21-22"
+                  type="checkbox"
+                  name="variety"
+                >
+                <span class="round button">21:00 - 22:00</span>
+              </label>
+            </div>
+            <router-link
+              v-if="rentalPeriod"
+              to="/confirm"
+              class="confirm-btn"
+            >
+              確定租借
+            </router-link>
           </div>
         </div>
       </div>
@@ -283,14 +406,18 @@ export default {
   }
 }
 .rental-period {
+  input[type=radio], input[type=checkbox] {
+    display: none;
+  }
+  input[type=radio]:checked + .button, input[type=checkbox]:checked + .button {
+    background-color: #7E9791;
+    color: #FFFFFF;
+  }
+  .round {
+    border: 1px solid #E4E8EB;
+    border-radius: 4px;
+  }
   .time {
-    input[type=checkbox] {
-      display: none;
-    }
-    input[type=checkbox]:checked + .button {
-      background-color: green;
-      color: #FFFFFF;
-    }
     .button {
       width: 84px;
       height: 43px;
@@ -298,15 +425,39 @@ export default {
       background: #fff;
       color: #333;
       cursor: pointer;
+      @include font-setting('Noto Serif TC', normal, 600, 16px, 43px, #6B7280);
     }
     .button:hover {
       background: #bbb;
       color: #fff;
     }
-    .round {
-      border: 1px solid #E4E8EB;
-      border-radius: 4px;
+  }
+  .during {
+    flex-flow: row wrap;
+    .button {
+      margin-top: 13px;
+      margin-right: 17px;
+      width: 137px;
+      height: 43px;
+      display: inline-block;
+      background: #fff;
+      color: #333;
+      cursor: pointer;
+      @include font-setting('Noto Serif TC', normal, 600, 16px, 43px, #6B7280);
     }
+    .button:hover {
+      background: #bbb;
+      color: #fff;
+    }
+  }
+  .confirm-btn {
+    margin-top: 34px;
+    width: 256px;
+    height: 46px;
+    display: block;
+    background: #56675F;
+    border-radius: 4px;
+    @include font-setting('Noto Serif TC', normal, 600, 18px, 46px, #F8F9FA);
   }
 }
 // checkbox style
@@ -341,9 +492,7 @@ input[type=checkbox]:checked:after {
 .calendar {
   // margin: 0 auto !important;
   width: 372px;
-  height: 337px;
-}
-.main-container.calendar.multiple {
-  width: 100%;
+  height: 300px;
+  padding-bottom: 15px;
 }
 </style>
