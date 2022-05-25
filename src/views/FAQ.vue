@@ -112,6 +112,9 @@ export default {
   margin-top: 28px;
 }
 .title {
+  width: auto;
+  height: 20px;
+  display: block;
   @include font-setting('Noto Serif TC', normal, 700, 24px, 20px, #3B485B);
 }
 .horizon {
