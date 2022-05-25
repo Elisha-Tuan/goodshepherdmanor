@@ -14,10 +14,16 @@
         class="toggle"
       >
       <div class="d-flex justify-content-between w-100">
-        <h1 class="title">
+        <label
+          class="title"
+          :for="`toggle${question.id}`"
+        >
           {{ question.title }}
-        </h1>
-        <label :for="`toggle${question.id}`"> &lt; </label>
+        </label>
+        <label
+          class="checkMark"
+          :for="`toggle${question.id}`"
+        > &lt; </label>
       </div>
       <div class="horizon w-100" />
       <div class="content">
@@ -130,6 +136,7 @@ export default {
   display: none;
   & ~ div > label {
     transition: all 0.7s ease-out;
+    cursor: pointer;
   }
   &:checked ~ .content {
     // transition: opacity 0.2s ease-out 0.1s;
@@ -138,7 +145,7 @@ export default {
     // transform: scale(1, 1);
     // transform-origin: top;
   }
-  &:checked ~ div > label {
+  &:checked ~ div > .checkMark {
     transform: rotate(-0.25turn);
   }
 }
