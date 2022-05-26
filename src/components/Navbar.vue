@@ -224,6 +224,7 @@ export default {
   min-height: 100vh;
   background: #3B485B;
   opacity: 0.9;
+  z-index: 201;
 }
 .cancel-btn {
   position: absolute;
@@ -232,7 +233,7 @@ export default {
   font-size: 35px;
   font-weight: 400;
   line-height: 41px;
-  z-index: 3;
+  z-index: 203;
   cursor: pointer;
   width: 41px;
   height: 41px;
@@ -241,6 +242,7 @@ export default {
   background-color: #fff;
 }
 .form-table {
+  z-index: 202;
   position: fixed;
   top: 50%;
   left: 50%;

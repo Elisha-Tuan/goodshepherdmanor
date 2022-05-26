@@ -492,7 +492,7 @@ input[type=checkbox]:checked:after {
 .calendar {
   // margin: 0 auto !important;
   width: 372px;
-  height: 300px;
+  height: fit-content;
   padding-bottom: 15px;
 }
 </style>
