@@ -4,6 +4,7 @@
       <label for="">日期</label>
       <input
         id=""
+        v-model="date"
         class=""
         name="a-time-start"
         type="date"
@@ -12,34 +13,114 @@
     </div>
     <div class="headCount d-flex align-items-center justify-content-center">
       <label for="">人數</label>
-      <i class="las la-minus" />
+      <i
+        class="las la-minus"
+        @click="reduceNum"
+      />
       <input
         id=""
+        v-model="headCount"
         class=""
         type="number"
         placeholder="1~9"
       >
-      <i class="las la-plus" />
+      <i
+        class="las la-plus"
+        @click="increaseNum"
+      />
     </div>
     <div class="usage d-flex align-items-center justify-content-center">
       <label for="">用途</label>
       <select
         id="sort"
+        v-model="usage"
         name="usage"
         placeholder="請選擇"
       >
-        <option>usage<i class="las la-caret-down" /></option>
+        <option
+          value=""
+          disabled
+          selected
+        >
+          Select your usage
+        </option>
+        <option>會議<i class="las la-caret-down" /></option>
+        <option>小組<i class="las la-caret-down" /></option>
+        <option>聚餐<i class="las la-caret-down" /></option>
+        <option>娛樂<i class="las la-caret-down" /></option>
+        <option>親子<i class="las la-caret-down" /></option>
+        <option>露營<i class="las la-caret-down" /></option>
+        <option>特會<i class="las la-caret-down" /></option>
+        <option>練團<i class="las la-caret-down" /></option>
       </select>
     </div>
-    <button class="searchBtn">
+    <button
+      class="searchBtn"
+      @click="handleSearch"
+    >
       <i class="las la-search" />
     </button>
   </div>
 </template>
 
 <script>
+// import { toNamespacedPath } from 'path'
+import Swal from 'sweetalert2'
+
 export default {
-  name: 'SearchBar'
+  name: 'SearchBar',
+  data () {
+    return {
+      date: '',
+      headCount: '',
+      usage: ''
+    }
+  },
+  methods: {
+    increaseNum () {
+      if (!this.headCount) {
+        this.headCount = 1
+      } else {
+        this.headCount++
+      }
+    },
+    reduceNum () {
+      if (this.headCount > 1) {
+        this.headCount--
+      } else if (!this.headCount) {
+        this.headCount = 1
+      }
+    },
+    handleSearch (e) {
+      if (!this.date) {
+        Swal.fire({
+          title: '請填寫日期',
+          icon: 'warning'
+        })
+        return
+      }
+      if (!this.headCount) {
+        Swal.fire({
+          title: '請填寫人數',
+          icon: 'warning'
+        })
+        return
+      }
+      if (!this.usage) {
+        Swal.fire({
+          title: '請填寫用途',
+          icon: 'warning'
+        })
+        return
+      }
+      const seachKeyword = {
+        date: this.date,
+        headCount: this.headCount,
+        usage: this.usage
+      }
+      this.$emit('after-search', seachKeyword)
+    }
+  }
 }
 </script>
 

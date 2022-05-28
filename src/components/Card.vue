@@ -50,8 +50,17 @@ export default {
   },
   data () {
     return {
-      room: this.initialRoom
+      room: []
     }
+  },
+  watch: {
+    initialRoom (newvalue) {
+      console.log(newvalue)
+      this.room = newvalue
+    }
+  },
+  mounted () {
+    this.room = this.initialRoom
   }
 }
 </script>
