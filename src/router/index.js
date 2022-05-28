@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import NotFound from '../views/NotFound.vue'
 import SignIn from '../views/SignIn.vue'
 import Rooms from '../views/Rooms.vue'
+// import store from '../store/index.js'
 
 Vue.use(VueRouter)
 
@@ -46,6 +47,18 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  console.log('beforeEach -- dispatch fetCurrentUser', {
+    to, from
+  })
+  const url = new URLSearchParams(window.location.search)
+  console.log(url.get('code'))
+  // fetch access token =>
+  // 呼叫actions方法的關鍵字dispatch，表示分發、指派的意思。在網路開發框架的語境中，dispatch
+  // store.dispatch('fetchCurrentUser')
+  next()
 })
 
 export default router

@@ -1,16 +1,5 @@
 <template>
   <nav class="navbar d-flex justify-content-end">
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon" />
-    </button>
     <div
       id="navbarSupportedContent"
       class="navbar-collapse collapse"
@@ -74,64 +63,167 @@
               class="form-table d-flex flex-column align-items-center"
               @submit.stop.prevent="handleSubmit"
             >
-              <div class="brand d-flex justify-content-center align-items-center">
-                <div class="logo">
-                  <img
-                    src="../../public/logo-header.png"
-                    alt=""
-                  >
+              <!-- form-header -->
+              <div class="form-header">
+                <div class="brand d-flex justify-content-center align-items-center">
+                  <div class="logo">
+                    <img
+                      src="../../public/logo-header.png"
+                      alt=""
+                    >
+                  </div>
+                  <h1 class="title">
+                    GOOD SHEPHERD<br><small>MANOR</small>
+                  </h1>
                 </div>
-                <h1 class="title">
-                  GOOD SHEPHERD<br><small>MANOR</small>
-                </h1>
+                <div
+                  class="cancel-btn"
+                  @click="toggleSignin"
+                >
+                  &times;
+                </div>
+              </div>
+              <!-- form-body -->
+              <div class="form-body">
+                <!-- SIGN IN -->
+                <template v-if="isSignup === false">
+                  <div class="d-flex flex-column align-items-start justify-content-start mt-5">
+                    <label for="email">帳號</label>
+                    <input
+                      id="email"
+                      v-model="email"
+                      name="email"
+                      type="email"
+                      class="form-control"
+                      placeholder="請輸入Email"
+                      autocomplete="username"
+                      required
+                      autofocus
+                    >
+                  </div>
+                  <div class="d-flex flex-column align-items-start justify-content-start mt-5">
+                    <label for="password">密碼</label>
+                    <input
+                      id="password"
+                      v-model="password"
+                      name="password"
+                      type="password"
+                      class="form-control"
+                      placeholder="請輸入密碼"
+                      autocomplete="current-password"
+                      required
+                    >
+                  </div>
+                </template>
+                <!-- SIGN UP -->
+                <template v-else>
+                  <div class="d-flex flex-column align-items-start justify-content-start mt-5">
+                    <label for="email">帳號</label>
+                    <input
+                      id="email"
+                      v-model="email"
+                      name="email"
+                      type="email"
+                      class="form-control"
+                      placeholder="請輸入Email"
+                      autocomplete="username"
+                      required
+                      autofocus
+                    >
+                  </div>
+                  <div class="d-flex flex-column align-items-start justify-content-start mt-5">
+                    <label for="password">密碼</label>
+                    <input
+                      id="password"
+                      v-model="password"
+                      name="password"
+                      type="password"
+                      class="form-control"
+                      placeholder="請輸入密碼"
+                      autocomplete="current-password"
+                      required
+                    >
+                  </div>
+                  <div class="d-flex flex-column align-items-start justify-content-start mt-5">
+                    <label for="password">姓名</label>
+                    <input
+                      id="password"
+                      v-model="password"
+                      name="name"
+                      type="text"
+                      class="form-control"
+                      placeholder="請輸入姓名"
+                      autocomplete="current-password"
+                      required
+                    >
+                  </div>
+                  <div class="d-flex flex-column align-items-start justify-content-start mt-5">
+                    <label for="password">手機</label>
+                    <input
+                      id="password"
+                      v-model="password"
+                      name="password"
+                      type="password"
+                      class="form-control"
+                      placeholder="請輸入密碼"
+                      autocomplete="current-password"
+                      required
+                    >
+                  </div>
+                </template>
+                <!-- forgot password only for sign in -->
+                <div
+                  v-if="isSignup === false"
+                  class="forgot-password mt-6"
+                >
+                  忘記密碼？
+                </div>
+                <!-- switch signin or signup btn -->
+                <button
+                  v-if="isSignup === false"
+                  class="signIn-btn"
+                  type="submit"
+                >
+                  登入
+                </button>
+                <button
+                  v-else
+                  class="signIn-btn"
+                  type="submit"
+                >
+                  注冊
+                </button>
+              </div>
+              <div class="quick-login">
+                快速登入
+              </div>
+              <!-- 第三方登入 -->
+              <div
+                class="btn line-login d-flex"
+                @click="lineLogin"
+              >
+                <img
+                  src="../../public/line_88.png"
+                  alt=""
+                  class="line-logo"
+                >
+                <div class="vertical" />
+                <p>Line綁定登入</p>
+              </div>
+              <!-- form-footer -->
+              <div
+                v-if="isSignup === false"
+                class="form-footer"
+                @click="toggleSignup"
+              >
+                還沒有會員嗎？<strong>註冊新帳號</strong>
               </div>
               <div
-                class="cancel-btn"
-                @click="toggleSignin"
+                v-else
+                class="form-footer"
+                @click="toggleSignup"
               >
-                &times;
-              </div>
-              <div class="d-flex flex-column align-items-start justify-content-start mt-5">
-                <label for="email">帳號</label>
-                <input
-                  id="email"
-                  v-model="email"
-                  name="email"
-                  type="email"
-                  class="form-control"
-                  placeholder="請輸入Email"
-                  autocomplete="username"
-                  required
-                  autofocus
-                >
-              </div>
-              <div class="d-flex flex-column align-items-start justify-content-start mt-5">
-                <label for="password">密碼</label>
-                <input
-                  id="password"
-                  v-model="password"
-                  name="password"
-                  type="password"
-                  class="form-control"
-                  placeholder="請輸入密碼"
-                  autocomplete="current-password"
-                  required
-                >
-              </div>
-
-              <div class="forgot-password mt-6">
-                忘記密碼？
-              </div>
-
-              <button
-                class="signIn-btn"
-                type="submit"
-              >
-                登入
-              </button>
-
-              <div class="text-center mb-3">
-                還沒有會員嗎？<strong>註冊新帳號</strong>
+                已經有帳號？<strong>登入會員</strong>
               </div>
             </form>
           </div>
@@ -159,6 +251,7 @@ export default {
   data () {
     return {
       isSignin: false,
+      isSignup: false,
       currentUser: {
         id: -1,
         name: '',
@@ -186,6 +279,25 @@ export default {
       } else if (this.isSignin === true) {
         this.isSignin = false
       }
+    },
+    toggleSignup () {
+      if (this.isSignup === false) {
+        this.isSignup = true
+      } else if (this.isSignup === true) {
+        this.isSignup = false
+      }
+    },
+    lineLogin () {
+      let clientId = '1657169336'
+      // let redirectUri = 'https://elisha-tuan.github.io/goodshepherdmanor/'
+      let redirectUri = 'http://localhost:8080/'
+      let link = 'https://access.line.me/oauth2/v2.1/authorize?'
+      link += 'response_type=code'
+      link += '&client_id=' + clientId
+      link += '&redirect_uri=' + redirectUri
+      link += '&state=123456789'
+      link += '&scope=openid%20profile'
+      window.location.href = link
     }
   }
 }
@@ -225,6 +337,29 @@ export default {
   background: #3B485B;
   opacity: 0.9;
   z-index: 201;
+}
+.form-header {
+  width: 100%;
+  .brand {
+    z-index: 2;
+    height: 118px;
+    width: 100%;
+    background: #F2F5F4;
+    border-radius: 8px 8px 0px 0px;
+    opacity: 1;
+    .logo {
+      margin-right: 9px;
+      width: 101px;
+      height: 45px;
+    }
+    .title {
+      text-align: left;
+      @include font-setting('Noto Serif TC', normal, 800, 20px, 20px, #7E9791);
+      small {
+        @include font-setting('Noto Serif TC', normal, 400, 18px, 18px, #7E9791);
+      }
+    }
+  }
 }
 .cancel-btn {
   position: absolute;
@@ -275,24 +410,50 @@ export default {
     border-radius: 4px;
   }
 }
-.brand {
-  z-index: 2;
-  height: 118px;
-  width: 100%;
-  background: #F2F5F4;
-  border-radius: 8px 8px 0px 0px;
-  opacity: 1;
-  .logo {
-    margin-right: 9px;
-    width: 101px;
-    height: 45px;
+// 第三方登入
+//line login
+.line-login {
+  width: 155px;
+  height: 41px;
+  position: relative;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #06C755;
+  &:hover:after {
+    position: absolute;
+    width: 155px;
+    height: 41px;
+    content: '';
+    background-color: #000000;
+    opacity: 10%;
   }
-  .title {
-    text-align: left;
-    @include font-setting('Noto Serif TC', normal, 800, 20px, 20px, #7E9791);
-    small {
-      @include font-setting('Noto Serif TC', normal, 400, 18px, 18px, #7E9791);
-    }
+  &:active:after {
+    opacity: 30%;
+  }
+  .line-logo {
+    // display: none;
+    width: 41px;
+  }
+  .vertical {
+    // display: none;
+    height: 41px;
+    width: 1px;
+    content: '';
+    background-color: #000000;
+    opacity: 8%;
+  }
+  p {
+    // display: none;
+    width: 100%;
+    text-align: center;
+    @include font-setting('Noto Serif TC', normal, 400, 14px, 41px, #FFFFFF);
+  }
+}
+.form-footer {
+  margin-top: 23px;
+  @include font-setting('Noto Serif TC', normal, 400, 16px, 23px, #6B7280);
+  strong {
+    cursor: pointer;
   }
 }
 </style>
