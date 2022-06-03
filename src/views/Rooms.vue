@@ -33,6 +33,8 @@ const dummyData = {
       id: 1,
       name: '教室一',
       headCount: '1-3',
+      headCountMin: 1,
+      headCountMax: 3,
       usage: ['會議', '小組', '聚餐', '娛樂', '親子'],
       img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171'
     },
@@ -40,6 +42,8 @@ const dummyData = {
       id: 2,
       name: '教室二',
       headCount: '1-5',
+      headCountMin: 1,
+      headCountMax: 5,
       usage: ['親子'],
       img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=958'
     },
@@ -47,6 +51,8 @@ const dummyData = {
       id: 3,
       name: '教室三',
       headCount: '1-7',
+      headCountMin: 1,
+      headCountMax: 7,
       usage: ['娛樂'],
       img: 'https://images.unsplash.com/photo-1589834390005-5d4fb9bf3d32?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387'
     },
@@ -54,6 +60,8 @@ const dummyData = {
       id: 4,
       name: '教室四',
       headCount: '3-5',
+      headCountMin: 3,
+      headCountMax: 5,
       usage: ['露營'],
       img: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170'
     },
@@ -61,6 +69,8 @@ const dummyData = {
       id: 5,
       name: '教室五',
       headCount: '2-7',
+      headCountMin: 2,
+      headCountMax: 7,
       usage: ['會議'],
       img: 'https://images.unsplash.com/photo-1481277542470-605612bd2d61?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1106'
     },
@@ -68,6 +78,8 @@ const dummyData = {
       id: 6,
       name: '教室六',
       headCount: '8-10',
+      headCountMin: 8,
+      headCountMax: 10,
       usage: ['小組'],
       img: 'https://images.unsplash.com/photo-1486304873000-235643847519?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332'
     },
@@ -75,6 +87,8 @@ const dummyData = {
       id: 7,
       name: '教室七',
       headCount: '3-6',
+      headCountMin: 3,
+      headCountMax: 6,
       usage: ['聚餐'],
       img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170'
     },
@@ -82,6 +96,8 @@ const dummyData = {
       id: 8,
       name: '教室八',
       headCount: '2-8',
+      headCountMin: 2,
+      headCountMax: 8,
       usage: ['會議', '小組'],
       img: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170'
     },
@@ -89,6 +105,8 @@ const dummyData = {
       id: 9,
       name: '教室九',
       headCount: '5-10',
+      headCountMin: 5,
+      headCountMax: 10,
       usage: ['小組', '特會'],
       img: 'https://images.unsplash.com/photo-1560448205-4d9b3e6bb6db?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170'
     },
@@ -96,6 +114,8 @@ const dummyData = {
       id: 10,
       name: '教室十',
       headCount: '1-4',
+      headCountMin: 1,
+      headCountMax: 4,
       usage: ['會議', '聚餐'],
       img: 'https://images.unsplash.com/photo-1463797221720-6b07e6426c24?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171'
     },
@@ -103,6 +123,8 @@ const dummyData = {
       id: 11,
       name: '教室十一',
       headCount: '1-3',
+      headCountMin: 1,
+      headCountMax: 3,
       usage: ['會議', '親子'],
       img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171'
     },
@@ -110,6 +132,8 @@ const dummyData = {
       id: 12,
       name: '教室十二',
       headCount: '1-5',
+      headCountMin: 1,
+      headCountMax: 5,
       usage: ['小組', '聚餐', '娛樂'],
       img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=958'
     },
@@ -117,6 +141,8 @@ const dummyData = {
       id: 13,
       name: '教室十三',
       headCount: '1-7',
+      headCountMin: 1,
+      headCountMax: 7,
       usage: ['會議', '露營', '親子'],
       img: 'https://images.unsplash.com/photo-1589834390005-5d4fb9bf3d32?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387'
     },
@@ -124,6 +150,8 @@ const dummyData = {
       id: 14,
       name: '教室十四',
       headCount: '3-5',
+      headCountMin: 3,
+      headCountMax: 5,
       usage: ['特會', '露營', '聚餐'],
       img: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170'
     },
@@ -131,6 +159,8 @@ const dummyData = {
       id: 15,
       name: '教室十五',
       headCount: '2-7',
+      headCountMin: 2,
+      headCountMax: 7,
       usage: ['親子', '小組', '親子'],
       img: 'https://images.unsplash.com/photo-1481277542470-605612bd2d61?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1106'
     },
@@ -138,6 +168,8 @@ const dummyData = {
       id: 16,
       name: '教室十六',
       headCount: '8-10',
+      headCountMin: 8,
+      headCountMax: 10,
       usage: ['會議', '小組', '聚餐'],
       img: 'https://images.unsplash.com/photo-1486304873000-235643847519?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332'
     },
@@ -145,6 +177,8 @@ const dummyData = {
       id: 17,
       name: '教室十七',
       headCount: '3-6',
+      headCountMin: 3,
+      headCountMax: 67,
       usage: ['會議', '親子', '娛樂'],
       img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170'
     },
@@ -152,6 +186,8 @@ const dummyData = {
       id: 18,
       name: '教室十八',
       headCount: '2-8',
+      headCountMin: 2,
+      headCountMax: 8,
       usage: ['露營', '親子', '特會'],
       img: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170'
     },
@@ -159,6 +195,8 @@ const dummyData = {
       id: 19,
       name: '教室十九',
       headCount: '5-10',
+      headCountMin: 5,
+      headCountMax: 10,
       usage: ['娛樂', '小組', '練團'],
       img: 'https://images.unsplash.com/photo-1560448205-4d9b3e6bb6db?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170'
     },
@@ -166,6 +204,8 @@ const dummyData = {
       id: 20,
       name: '教室二十',
       headCount: '1-4',
+      headCountMin: 1,
+      headCountMax: 4,
       usage: ['親子', '練團', '聚餐'],
       img: 'https://images.unsplash.com/photo-1463797221720-6b07e6426c24?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171'
     }
@@ -229,6 +269,13 @@ export default {
       this.filteredRooms = this.rooms.filter((room) =>
         room.usage.some(item => item === searchKeyword.usage)
       )
+      this.filteredRooms = this.rooms.filter((room) => {
+        if (searchKeyword.headCount <= room.headCountMax) {
+          if (searchKeyword.headCount >= room.headCountMin) {
+            return true
+          }
+        }
+      })
       console.log(this.filteredRooms)
     }
   }

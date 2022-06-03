@@ -14,7 +14,7 @@
       </a>
       <div class="room-description">
         <div class="headCount">
-          <p>適合人數：{{ room.headCount }}人</p>
+          <p>適合人數：{{ room.headCountMin }}-{{ room.headCountMax }}人</p>
         </div>
         <div class="usage">
           <p>
