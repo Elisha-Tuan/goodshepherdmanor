@@ -265,18 +265,24 @@ export default {
       this.nextPage = next
     },
     handleAfterSearch (searchKeyword) {
-      console.log(searchKeyword.usage)
+      // console.log(searchKeyword)
       this.filteredRooms = this.rooms.filter((room) =>
-        room.usage.some(item => item === searchKeyword.usage)
+        room.usage.some(item => item === searchKeyword.usage) &&
+        (searchKeyword.headCount <= room.headCountMax) &&
+        (searchKeyword.headCount >= room.headCountMin)
       )
-      this.filteredRooms = this.rooms.filter((room) => {
-        if (searchKeyword.headCount <= room.headCountMax) {
-          if (searchKeyword.headCount >= room.headCountMin) {
-            return true
-          }
-        }
-      })
-      console.log(this.filteredRooms)
+      // this.filteredRooms = this.rooms.filter((room) => {
+      //   if (searchKeyword.headCount <= room.headCountMax) {
+      //     if (searchKeyword.headCount >= room.headCountMin) {
+      //       return true
+      //     }
+      //   }
+      // })
+      // 時間格式為'yyyy-mm-dd'
+      // this.filteredRooms = this.rooms.filter((room) => {
+      //   room.date.some(item => item === searchKeyword.date)
+      // })
+      // console.log(this.filteredRooms)
     }
   }
 }

@@ -30,6 +30,7 @@
         {{ question.content }}
       </div>
     </div>
+    <!-- <button @click="toggleFeatures">bbbbbutton</button> -->
   </div>
 </template>
 
@@ -81,7 +82,8 @@ const dummyData = {
 export default {
   data () {
     return {
-      questions: []
+      questions: [],
+      featuresOpen: false
     }
   },
   created () {
@@ -91,6 +93,9 @@ export default {
     fetchQuestions () {
       const { questions } = dummyData
       this.questions = questions
+    },
+    toggleFeatures () {
+      this.featuresOpen = !this.featuresOpen
     }
   }
 }
