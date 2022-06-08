@@ -195,24 +195,32 @@
                     注冊
                   </button>
                 </div>
-                <div class="quick-login">
-                  <div class="horizon horizon-one" />
-                  快速登入
-                  <div class="horizon horizon-two" />
-                </div>
-                <!-- 第三方登入 -->
-                <div
-                  class="btn line-login d-flex"
-                  @click="lineLogin"
-                >
-                  <img
-                    src="../../public/line_88.png"
-                    alt=""
-                    class="line-logo"
+                <transition name="fade-2">
+                  <div
+                    v-if="isSignup === false"
+                    class="quick-login"
                   >
-                  <div class="vertical" />
-                  <p>Line綁定登入</p>
-                </div>
+                    <div class="horizon horizon-one" />
+                    快速登入
+                    <div class="horizon horizon-two" />
+                  </div>
+                </transition>
+                <!-- 第三方登入 -->
+                <transition name="fade-2">
+                  <div
+                    v-if="isSignup === false"
+                    class="btn line-login d-flex"
+                    @click="lineLogin"
+                  >
+                    <img
+                      src="../../public/line_88.png"
+                      alt=""
+                      class="line-logo"
+                    >
+                    <div class="vertical" />
+                    <p>Line綁定登入</p>
+                  </div>
+                </transition>
                 <!-- form-footer -->
                 <div
                   v-if="isSignup === false"
@@ -483,6 +491,12 @@ export default {
   transition: opacity .5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.fade-2-enter-active {
+  transition: opacity .3s;
+}
+.fade-2-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 </style>
