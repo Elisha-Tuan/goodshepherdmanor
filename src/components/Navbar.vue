@@ -184,9 +184,21 @@
                     v-if="isSignup === false"
                     class="signIn-btn"
                     type="submit"
+                    @click="toggleSignin"
+                  >
+                    <router-link
+                      to="/user"
+                    >
+                      登入
+                    </router-link>
+                  </button>
+                  <!-- <router-link
+                    v-if="isSignup === false"
+                    class="signIn-btn"
+                    to="/user"
                   >
                     登入
-                  </button>
+                  </router-link> -->
                   <button
                     v-else
                     class="signIn-btn"
