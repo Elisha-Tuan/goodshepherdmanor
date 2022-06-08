@@ -196,7 +196,9 @@
                   </button>
                 </div>
                 <div class="quick-login">
+                  <div class="horizon horizon-one" />
                   快速登入
+                  <div class="horizon horizon-two" />
                 </div>
                 <!-- 第三方登入 -->
                 <div
@@ -410,6 +412,24 @@ export default {
     @include font-setting('Noto Serif TC', normal, 400, 16px, 23px, #fff);
     background: #56675F;
     border-radius: 4px;
+  }
+}
+.quick-login {
+  position: relative;
+  margin: 34px 0;
+  @include font-setting('Noto Serif TC', normal, 400, 16px, 23px, #6B7280);
+  .horizon {
+    position: absolute;
+    top: 50%;
+    width: 198.5px;
+    height: 1px;
+    background-color: #828282;
+  }
+  .horizon-one {
+    right: 100px;
+  }
+  .horizon-two {
+    left: 100px;
   }
 }
 // 第三方登入

@@ -79,7 +79,6 @@ export default {
       this.currentEdit.status = keyword
     },
     doneEdit () {
-      console.log('111')
       if (this.currentEdit.status) {
         this.user = { ...this.currentEdit }
       } else {
