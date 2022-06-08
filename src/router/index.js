@@ -23,6 +23,7 @@ const routes = [
     path: '/user',
     name: 'user',
     component: User,
+    redirect: '/user/personal-info',
     children: [
       {
         path: 'personal-info',
