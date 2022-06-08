@@ -55,7 +55,7 @@ export default {
   },
   watch: {
     initialRoom (newvalue) {
-      console.log(newvalue)
+      // console.log(newvalue)
       this.room = newvalue
     }
   },

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import NotFound from '../views/NotFound.vue'
 import SignIn from '../views/SignIn.vue'
 import Rooms from '../views/Rooms.vue'
+import User from '../views/UserCenter.vue'
 // import store from '../store/index.js'
 
 Vue.use(VueRouter)
@@ -17,6 +18,28 @@ const routes = [
     path: '/rooms',
     name: 'rooms',
     component: Rooms
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: User,
+    children: [
+      {
+        path: 'personal-info',
+        name: 'personal-info',
+        component: () => import ('../views/UserInfo.vue')
+      },
+      {
+        path: 'record',
+        name: 'record',
+        component: () => import ('../views/UserRecord.vue')
+      },
+      {
+        path: 'change-password',
+        name: 'change-password',
+        component: () => import ('../views/UserChangePassword.vue')
+      }
+    ]
   },
   {
     path: '/rooms/:id',
