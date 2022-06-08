@@ -9,7 +9,9 @@
         <p class="account">
           帳號：{{ user.email }}
         </p>
-        <router-view />
+        <transition name="fade">
+          <router-view />
+        </transition>
       </div>
     </div>
   </div>
@@ -77,5 +79,14 @@ export default {
     border-bottom: 1px solid #E4E8EB;
     text-align: left;
     @include font-setting('Noto Serif TC', normal, 700, 16px, 46px, #56675F)
+}
+.fade-enter-active {
+  transition: opacity .3s;
+}
+// .fade-leave-active {
+//   transition: opacity .1s;
+// }
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

@@ -1,9 +1,5 @@
 <template>
-  <div class="container">
-    <h1>
-      This is user change password
-    </h1>
-  </div>
+  <div class="container" />
 </template>
 
 <script>
@@ -11,3 +7,6 @@ export default {
   name: 'ChangePassword'
 }
 </script>
+
+<style lang="scss" scoped>
+</style>
