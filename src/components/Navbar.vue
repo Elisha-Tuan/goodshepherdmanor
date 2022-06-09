@@ -56,8 +56,9 @@
             登入
           </div>
         </template>
+        <!-- <div  v-if="isSignin === true" class="blank" /> -->
         <transition name="fade">
-          <template v-if="isSignin === true">
+          <template v-if="isSignin === true && isAuthenticated === false">
             <div class="signIn-container">
               <div class="blank" />
               <form
@@ -258,13 +259,14 @@
 </template>
 
 <script>
+import authorizationAPI from '../../apis/authorization'
+import Swal from 'sweetalert2'
 // seed data
 const dummyUser = {
   currentUser: {
     id: 1,
     name: '管理者',
     email: 'root@example.com',
-    image: 'https://i.pravatar.cc/300',
     isAdmin: false
   },
   isAuthenticated: false
@@ -322,6 +324,37 @@ export default {
       link += '&state=123456789'
       link += '&scope=openid%20profile'
       window.location.href = link
+    },
+    async handleSubmit () {
+      try {
+        if (!this.email || !this.password) {
+          Swal.fire({
+            icon: 'warning',
+            title: '請輸入Email & password'
+          })
+          return
+        }
+        this.isProcessing = true
+        const response = await authorizationAPI.signIn({
+          email: this.email,
+          password: this.password
+        })
+        const { data } = response
+        if (data.status !== 'success') {
+          throw new Error(data.message)
+        }
+        localStorage.setItem('token', data.token)
+        // 透過setCurrentUser的方法把使用者資料儲存到vuex的state中
+        this.$store.commit('setCurrentUser', data.user)
+        this.$router.push('/restaurants')
+      } catch (error) {
+        this.isProcessing = false
+        // console.log(error)
+        Swal.fire({
+          icon: 'warning',
+          title: 'wrong accountnumber or password'
+        })
+      }
     }
   }
 }
@@ -500,7 +533,7 @@ export default {
 }
 //transition
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity .3s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;

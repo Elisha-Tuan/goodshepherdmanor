@@ -3,7 +3,7 @@
     <div class="main-container">
       <div class="path">
         首頁/場地租借/
-      <!-- {{ room.name || '教室名稱' }} -->
+        {{ room.name }}
       </div>
       <div class="wrapper-main d-flex">
         <div class="slides">
@@ -36,28 +36,31 @@
         <div class="detail d-flex flex-column justify-content-start align-items-start">
           <h1 class="room-name originalFontStyle">
             教室名稱
-          <!-- {{ room.name || '教室名稱' }} -->
+            {{ room.name }}
           </h1>
           <p class="room-headCount originalFontStyle mb-4">
             適合人數：
-            <!-- {{ room.headCount || '1-3' }} -->
+            {{ room.headCount }}
             人
           </p>
           <p class="room-usage originalFontStyle mb-4">
             適合用途：
-            <span>
-            <!-- {{ room.usage }} -->
+            <span
+              v-for="usage in room.usages"
+              :key="usage.index"
+            >
+              {{ usage }}
             </span>
           </p>
           <p class="room-equipment originalFontStyle mb-4">
             場地設備：
             <span>
-            <!-- {{ room.equipment }} -->
+              {{ room.equipment }}
             </span>
           </p>
           <p class="room-introduction originalFontStyle mb-4">
             介紹：
-          <!-- {{ room.introduction || '介紹：介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字介紹文字' }} -->
+            {{ room.introduction }}
           </p>
           <div class="horizon mb-4" />
           <div class="accommodation d-flex align-items-center">
@@ -267,6 +270,19 @@
 <script>
 import { FunctionalCalendar } from 'vue-functional-calendar'
 import { slider, slideritem } from 'vue-concise-slider'
+const dummyData = {
+  room: {
+    id: 1,
+    name: '教室一',
+    headCount: '1-3',
+    headCountMin: 1,
+    headCountMax: 3,
+    usages: ['會議', '小組', '聚餐', '娛樂', '親子'],
+    equipment: '音響',
+    introduction: '介紹介紹',
+    img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171'
+  }
+}
 export default {
   components: {
     FunctionalCalendar,
@@ -275,6 +291,7 @@ export default {
   },
   data () {
     return {
+      room: {},
       rentalPeriod: '',
       calendarData: {},
       // Image list
@@ -323,32 +340,23 @@ export default {
       }
     }
   },
-  mounted () {
-    // let that = this
-    // setTimeout(function () {
-    //   that.someList = [
-    //     {
-    //       html: 'slide1',
-    //       style: {
-    //         'background': '#1bbc9b'
-    //       }
-    //     },
-    //     {
-    //       html: 'slide2',
-    //       style: {
-    //         'background': '#4bbfc3'
-    //       }
-    //     },
-    //     {
-    //       html: 'slide3',
-    //       style: {
-    //         'background': '#7baabe'
-    //       }
-    //     }
-    //   ]
-    // }, 2000)
+  created () {
+    this.fetchRoom()
   },
   methods: {
+    fetchRoom () {
+      const { room } = dummyData
+      this.room = {
+        ...this.room,
+        id: room.id,
+        name: room.name,
+        usages: room.usages,
+        equipment: room.equipment,
+        headCount: room.headCount,
+        introduction: room.introduction,
+        img: room.img
+      }
+    },
     changePeriod (period) {
       this.rentalPeriod = period
     }

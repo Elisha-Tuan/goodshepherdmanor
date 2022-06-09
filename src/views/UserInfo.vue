@@ -103,6 +103,7 @@ export default {
   .edit {
     display: block;
     color: rgb(215, 86, 86);
+    background-color: rgb(253, 215, 145);
   }
 }
 .item {
