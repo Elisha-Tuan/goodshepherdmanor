@@ -1,39 +1,49 @@
 <template>
   <div class="searchBar-wrapper d-flex">
     <div class="during d-flex align-items-center justify-content-end">
-      <label for="">日期</label>
+      <label
+        for="date"
+        class="pointer"
+      >日期</label>
       <input
-        id=""
+        id="date"
         v-model="date"
-        class=""
+        class="pointer"
         name="a-time-start"
         type="date"
         placeholder="新增租借日期"
       >
     </div>
     <div class="headCount d-flex align-items-center justify-content-center">
-      <label for="">人數</label>
+      <label
+        for="headCount"
+        class="pointer"
+      >人數</label>
       <i
-        class="las la-minus"
+        class="las la-minus pointer"
         @click="reduceNum"
       />
       <input
-        id=""
+        id="headCount"
         v-model="headCount"
-        class=""
+        class="pointer"
         type="number"
         placeholder="1~9"
       >
       <i
-        class="las la-plus"
+        class="las la-plus pointer"
         @click="increaseNum"
       />
     </div>
     <div class="usage d-flex align-items-center justify-content-center">
-      <label for="">用途</label>
+      <label
+        for="sort"
+        class="pointer"
+      >用途</label>
       <select
         id="sort"
         v-model="usage"
+        class="pointer"
         name="usage"
         placeholder="請選擇"
       >
@@ -194,7 +204,8 @@ export default {
     border-radius: 4px;
     color: #9AA0A9;
   }
-}.searchBtn {
+}
+.searchBtn {
   margin: auto 13px auto 0;
   width: 46px;
   height: 46px;
@@ -205,5 +216,8 @@ export default {
     line-height: 20px;
     color: #F8F9FA;
   }
+}
+.pointer {
+  cursor: pointer;
 }
 </style>

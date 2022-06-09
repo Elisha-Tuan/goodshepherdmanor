@@ -4,14 +4,23 @@
     class="d-flex flex-column justify-content-start align-items-center"
   >
     <div id="main-container">
-      <SearchBar @after-search="handleAfterSearch" />
-      <div class="wrapper-card">
+      <SearchBar
+        @after-search="handleAfterSearch"
+        @click="shuffle"
+      />
+      <transition-group
+        name="cell"
+        tag="div"
+        class="wrapper-card"
+      >
+        <!-- <div class="wrapper-card"> -->
         <Card
           v-for="room in renderRoom"
-          :key="room.index"
+          :key="room.id"
           :initial-room="room"
         />
-      </div>
+      <!-- </div> -->
+      </transition-group>
     </div>
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.053119457709!2d121.60187201599136!3d25.100063141791864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442add9a2c10a43%3A0xc7c0a2ded7d590d3!2z5aW954mn5Lq66I6K5ZyS!5e0!3m2!1szh-TW!2stw!4v1652838585532!5m2!1szh-TW!2stw"
@@ -26,6 +35,7 @@
 <script>
 import Card from '@/components/Card.vue'
 import SearchBar from '@/components/searchBar.vue'
+import _ from 'lodash'
 // import axios from 'axios'
 const dummyData = {
   rooms: [
@@ -283,6 +293,11 @@ export default {
       //   room.date.some(item => item === searchKeyword.date)
       // })
       // console.log(this.filteredRooms)
+    },
+    shuffle () {
+      // this.rooms = _.shuffle(this.rooms)
+      // this.filteredRooms = _.shuffle(this.filteredRooms)
+      this.renderRoom = _.shuffle(this.renderRoom)
     }
   }
 }
@@ -310,5 +325,17 @@ export default {
 iframe {
   width: 100%;
   min-height: 500px;
+}
+.cell-move {
+  transition: transform 1s;
+  // transition: opacity .1s ease-in-out;
+}
+.cell-complete-enter, .cell-complete-leave-to
+/* .list-complete-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.cell-complete-leave-active {
+  position: absolute;
 }
 </style>
