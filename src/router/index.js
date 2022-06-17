@@ -48,6 +48,11 @@ const routes = [
     component: () => import('../views/Room.vue')
   },
   {
+    path: '/rooms/:id/check-order',
+    name: 'check-order',
+    component: () => import('../views/CheckOrder.vue')
+  },
+  {
     path: '/signin',
     name: 'sign-in',
     component: SignIn

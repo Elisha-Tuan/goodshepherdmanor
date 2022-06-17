@@ -2,8 +2,10 @@
   <div id="app">
     <div class="main-container">
       <div class="path">
-        首頁/場地租借/
-        {{ room.name }}
+        首頁 / 場地租借 /
+        <span>
+          {{ room.name }}
+        </span>
       </div>
       <div class="wrapper-main d-flex">
         <div class="slides">
@@ -43,21 +45,21 @@
             {{ room.headCount }}
             人
           </p>
-          <p class="room-usage originalFontStyle mb-4">
+          <div class="room-usage originalFontStyle mb-4 d-flex">
             適合用途：
-            <span
+            <div
               v-for="usage in room.usages"
               :key="usage.index"
             >
               {{ usage }}
-            </span>
-          </p>
-          <p class="room-equipment originalFontStyle mb-4">
+            </div>
+          </div>
+          <div class="room-equipment originalFontStyle mb-4 d-flex">
             場地設備：
-            <span>
+            <div>
               {{ room.equipment }}
-            </span>
-          </p>
+            </div>
+          </div>
           <p class="room-introduction originalFontStyle mb-4">
             介紹：
             {{ room.introduction }}
@@ -248,7 +250,7 @@
             </div>
             <router-link
               v-if="rentalPeriod"
-              to="/confirm"
+              :to="{ path:`/rooms/${room.id}/check-order` }"
               class="confirm-btn"
             >
               確定租借
@@ -359,6 +361,7 @@ export default {
     },
     changePeriod (period) {
       this.rentalPeriod = period
+      console.log(this.calendarData.dateRange)
     }
   }
 }
@@ -383,6 +386,9 @@ export default {
   text-align: left;
   letter-spacing: 0.025em;
   @include font-setting('Noto Serif TC', normal, 700, 16px, 23px, #9AA0A9);
+  span {
+    color: #3B485B;
+  }
 }
 .wrapper-main {
   padding-bottom: 98px;
@@ -401,6 +407,15 @@ export default {
     .room-name {
       margin-bottom: 19px;
       @include font-setting('Noto Serif TC', normal, 700, 24px, 20px, #3B485B);
+    }
+    .room-usage, .room-equipment {
+      div {
+        padding: 4px 8px;
+        margin-right: 8px;
+        background: #F8F9FA;
+        border-radius: 4px;
+        @include font-setting('Noto Serif TC', normal, 600, 14px, 20px, #6B7280)
+      }
     }
     .horizon {
       width: 474px;
@@ -469,33 +484,35 @@ export default {
   }
 }
 // checkbox style
-input[type=checkbox] {
-  margin-right: 5px;
-  width: 16px;
-  height: 16px;
-  font-size: 16px;
-  position: relative;
-  cursor: pointer;
-}
+// input[type=checkbox] {
+//   margin-right: 5px;
+//   width: 16px;
+//   height: 16px;
+//   font-size: 16px;
+//   position: relative;
+//   cursor: pointer;
+// }
 input[type=checkbox]:after {
   position: absolute;
-  width: 16px;
-  height: 16px;
-  // content: '';
-  // color: #fff;
-  // display: inline-block;
-  // visibility: visible;
+  transform: translate(-30%,-20%);
+  width: 20px;
+  height: 20px;
+  content: '';
+  color: #fff;
+  display: inline-block;
+  visibility: visible;
   box-sizing: border-box;
   background-color: #FFFFFF;
-  border: 2px solid #7E9791;
-  border-radius: 2px;
+  border: 2px solid #D1D5DB;
+  border-radius: 4px;
 }
 input[type=checkbox]:checked:after {
   background-image: url("data:image/svg+xml,%3Csvg width='11' height='10' viewBox='0 0 11 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4.5L4.27273 8L7.13636 4.5L10 1' stroke='%237E9791' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E%0A");
   background-color: #FFFFFF;
-  color: #FFFFFF;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 15px 12px;
+  background-position: center;
+  border: 2px solid #7E9791;
 }
 .calendar {
   // margin: 0 auto !important;
