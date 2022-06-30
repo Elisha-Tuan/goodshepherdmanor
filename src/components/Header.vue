@@ -34,7 +34,18 @@
 import Navbar from './Navbar.vue'
 export default {
   name: 'Header',
-  components: { Navbar }
+  components: { Navbar },
+  props: {
+    initialSignIn: {
+      type: Boolean,
+      required: true
+    }
+  },
+  data () {
+    return {
+      isSignIn: this.initialSignIn
+    }
+  }
 }
 </script>
 

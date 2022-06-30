@@ -65,6 +65,7 @@
             {{ room.introduction }}
           </p>
           <div class="horizon mb-4" />
+          <!-- 選擇是否要入住 -->
           <div class="accommodation d-flex align-items-center">
             <p class="originalFontStyle mr-5">
               租借時間：
@@ -72,6 +73,7 @@
             <input type="checkbox">
             <p>需要住宿（請選擇入住與退房時間）</p>
           </div>
+          <!-- 選擇日期 -->
           <div class="calendar">
             <FunctionalCalendar
               ref="Calendar"
@@ -88,6 +90,7 @@
               @changedYear="changedYear"
             />
           </div>
+          <!-- 選擇時間段 -->
           <div class="rental-period">
             <div class="time d-flex align-items-center">
               <p class="originalFontStyle">
@@ -248,17 +251,30 @@
                 <span class="round button">21:00 - 22:00</span>
               </label>
             </div>
-            <router-link
-              v-if="rentalPeriod"
-              :to="{ path:`/rooms/${room.id}/check-order` }"
-              class="confirm-btn"
-            >
-              確定租借
-            </router-link>
+            <!-- 判斷登入狀態 -->
+            <template v-if="isAuthenticated === true">
+              <router-link
+                v-if="rentalPeriod"
+                :to="{ path:`/rooms/${room.id}/check-order` }"
+                class="confirm-btn"
+              >
+                確定租借
+              </router-link>
+            </template>
+            <template v-else>
+              <button
+                v-if="rentalPeriod"
+                class="confirm-btn"
+                @click.stop.prevent="toggleSignin"
+              >
+                確定租借
+              </button>
+            </template>
           </div>
         </div>
       </div>
     </div>
+    <!-- google maps -->
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.053119457709!2d121.60187201599136!3d25.100063141791864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442add9a2c10a43%3A0xc7c0a2ded7d590d3!2z5aW954mn5Lq66I6K5ZyS!5e0!3m2!1szh-TW!2stw!4v1652838585532!5m2!1szh-TW!2stw"
       style="border: 0; margin: 0;"
@@ -272,6 +288,7 @@
 <script>
 import { FunctionalCalendar } from 'vue-functional-calendar'
 import { slider, slideritem } from 'vue-concise-slider'
+import { mapState } from 'vuex'
 const dummyData = {
   room: {
     id: 1,
@@ -342,6 +359,9 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState(['isAuthenticated'])
+  },
   created () {
     this.fetchRoom()
   },
@@ -362,6 +382,9 @@ export default {
     changePeriod (period) {
       this.rentalPeriod = period
       console.log(this.calendarData.dateRange)
+    },
+    toggleSignin () {
+      this.$emit('after-toggleSignin')
     }
   }
 }

@@ -3,8 +3,11 @@
     id="good-shepherd-manor"
     class="d-flex flex-column scrollbar"
   >
-    <Header />
-    <router-view class="main" />
+    <Header :initial-sign-in="isSignIn" />
+    <router-view
+      class="main"
+      @after-toggleSignin="toggleSignin"
+    />
     <Footer />
   </div>
 </template>
@@ -17,6 +20,20 @@ export default {
   components: {
     Header,
     Footer
+  },
+  data () {
+    return {
+      isSignin: false
+    }
+  },
+  methods: {
+    toggleSignin () {
+      if (this.isSignIn === false) {
+        this.isSignIn = true
+      } else if (this.isSignIn === true) {
+        this.isSignIn = false
+      }
+    }
   }
 }
 </script>

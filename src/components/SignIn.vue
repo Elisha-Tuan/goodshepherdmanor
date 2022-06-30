@@ -1,299 +1,218 @@
 <template>
-  <transition name="fade">
-    <template v-if="isAuthenticated === false">
-      <div class="signIn-container">
-        <div class="blank" />
-        <form
-          class="form-table d-flex flex-column align-items-center"
-          @submit.stop.prevent="handleSubmit"
+  <div class="signIn-container">
+    <div class="blank" />
+    <form
+      class="form-table d-flex flex-column align-items-center"
+      @submit.stop.prevent="handleSubmit"
+    >
+      <!-- form-header -->
+      <div class="form-header">
+        <div class="brand d-flex justify-content-center align-items-center">
+          <div class="logo">
+            <img
+              src="../../public/logo-header.png"
+              alt=""
+            >
+          </div>
+          <h1 class="title">
+            GOOD SHEPHERD<br><small>MANOR</small>
+          </h1>
+        </div>
+        <div
+          class="cancel-btn"
+          @click="toggleSignin"
         >
-          <!-- form-header -->
-          <div class="form-header">
-            <div class="brand d-flex justify-content-center align-items-center">
-              <div class="logo">
-                <img
-                  src="../../public/logo-header.png"
-                  alt=""
-                >
-              </div>
-              <h1 class="title">
-                GOOD SHEPHERD<br><small>MANOR</small>
-              </h1>
-            </div>
-            <div
-              class="cancel-btn"
-              @click="toggleSignin"
-            >
-              &times;
-            </div>
-          </div>
-          <!-- form-body -->
-          <div class="form-body">
-            <!-- SIGN IN -->
-            <template v-if="isSignup === false">
-              <div
-                class="
-                  d-flex
-                  flex-column
-                  align-items-start
-                  justify-content-start
-                  mt-5
-                "
-              >
-                <label for="email">帳號</label>
-                <input
-                  id="email"
-                  v-model="email"
-                  name="email"
-                  type="email"
-                  class="form-control"
-                  placeholder="請輸入Email"
-                  autocomplete="username"
-                  required
-                  autofocus
-                >
-              </div>
-              <div
-                class="
-                  d-flex
-                  flex-column
-                  align-items-start
-                  justify-content-start
-                  mt-5
-                "
-              >
-                <label for="password">密碼</label>
-                <input
-                  id="password"
-                  v-model="password"
-                  name="password"
-                  type="password"
-                  class="form-control"
-                  placeholder="請輸入密碼"
-                  autocomplete="current-password"
-                  required
-                >
-              </div>
-            </template>
-            <!-- SIGN UP -->
-            <template v-else>
-              <div
-                class="
-                  d-flex
-                  flex-column
-                  align-items-start
-                  justify-content-start
-                  mt-5
-                "
-              >
-                <label for="email">帳號</label>
-                <input
-                  id="email"
-                  v-model="email"
-                  name="email"
-                  type="email"
-                  class="form-control"
-                  placeholder="請輸入Email"
-                  autocomplete="username"
-                  required
-                  autofocus
-                >
-              </div>
-              <div
-                class="
-                  d-flex
-                  flex-column
-                  align-items-start
-                  justify-content-start
-                  mt-5
-                "
-              >
-                <label for="password">密碼</label>
-                <input
-                  id="password"
-                  v-model="password"
-                  name="password"
-                  type="password"
-                  class="form-control"
-                  placeholder="請輸入密碼"
-                  autocomplete="current-password"
-                  required
-                >
-              </div>
-              <div
-                class="
-                  d-flex
-                  flex-column
-                  align-items-start
-                  justify-content-start
-                  mt-5
-                "
-              >
-                <label for="password">姓名</label>
-                <input
-                  id="password"
-                  v-model="password"
-                  name="name"
-                  type="text"
-                  class="form-control"
-                  placeholder="請輸入姓名"
-                  autocomplete="current-password"
-                  required
-                >
-              </div>
-              <div
-                class="
-                  d-flex
-                  flex-column
-                  align-items-start
-                  justify-content-start
-                  mt-5
-                "
-              >
-                <label for="password">手機</label>
-                <input
-                  id="password"
-                  v-model="password"
-                  name="password"
-                  type="password"
-                  class="form-control"
-                  placeholder="請輸入密碼"
-                  autocomplete="current-password"
-                  required
-                >
-              </div>
-            </template>
-            <!-- forgot password only for sign in -->
-            <div
-              v-if="isSignup === false"
-              class="forgot-password mt-6"
-            >
-              忘記密碼？
-            </div>
-            <!-- switch signin or signup btn -->
-            <button
-              v-if="isSignup === false"
-              class="signIn-btn"
-              type="submit"
-              @click="toggleSignin"
-            >
-              <router-link to="/user">
-                登入
-              </router-link>
-            </button>
-            <!-- <router-link
-                v-if="isSignup === false"
-                class="signIn-btn"
-                to="/user"
-                >
-                登入
-                </router-link> -->
-            <button
-              v-else
-              class="signIn-btn"
-              type="submit"
-            >
-              注冊
-            </button>
-          </div>
-          <transition name="fade-2">
-            <div
-              v-if="isSignup === false"
-              class="quick-login"
-            >
-              <div class="horizon horizon-one" />
-              快速登入
-              <div class="horizon horizon-two" />
-            </div>
-          </transition>
-          <!-- 第三方登入 -->
-          <transition name="fade-2">
-            <div
-              v-if="isSignup === false"
-              class="btn line-login d-flex"
-              @click="lineLogin"
-            >
-              <img
-                src="../../public/line_88.png"
-                alt=""
-                class="line-logo"
-              >
-              <div class="vertical" />
-              <p>Line綁定登入</p>
-            </div>
-          </transition>
-          <!-- form-footer -->
-          <div
-            v-if="isSignup === false"
-            class="form-footer"
-            @click="toggleSignup"
-          >
-            還沒有會員嗎？<strong>註冊新帳號</strong>
-          </div>
-          <div
-            v-else
-            class="form-footer"
-            @click="toggleSignup"
-          >
-            已經有帳號？<strong>登入會員</strong>
-          </div>
-        </form>
+          &times;
+        </div>
       </div>
-    </template>
-  </transition>
+      <!-- form-body -->
+      <div class="form-body">
+        <!-- SIGN IN -->
+        <template v-if="isSignUp === false">
+          <div class="d-flex flex-column align-items-start justify-content-start mt-5">
+            <label for="email">帳號</label>
+            <input
+              id="email"
+              v-model="email"
+              name="email"
+              type="email"
+              class="form-control"
+              placeholder="請輸入Email"
+              autocomplete="username"
+              required
+              autofocus
+            >
+          </div>
+          <div class="d-flex flex-column align-items-start justify-content-start mt-5">
+            <label for="password">密碼</label>
+            <input
+              id="password"
+              v-model="password"
+              name="password"
+              type="password"
+              class="form-control"
+              placeholder="請輸入密碼"
+              autocomplete="current-password"
+              required
+            >
+          </div>
+        </template>
+        <!-- SIGN UP -->
+        <template v-else>
+          <div class="d-flex flex-column align-items-start justify-content-start mt-5">
+            <label for="email">帳號</label>
+            <input
+              id="email"
+              v-model="email"
+              name="email"
+              type="email"
+              class="form-control"
+              placeholder="請輸入Email"
+              autocomplete="username"
+              required
+              autofocus
+            >
+          </div>
+          <div class="d-flex flex-column align-items-start justify-content-start mt-5">
+            <label for="password">密碼</label>
+            <input
+              id="password"
+              v-model="password"
+              name="password"
+              type="password"
+              class="form-control"
+              placeholder="請輸入密碼"
+              autocomplete="current-password"
+              required
+            >
+          </div>
+          <div class="d-flex flex-column align-items-start justify-content-start mt-5">
+            <label for="password">姓名</label>
+            <input
+              id="password"
+              v-model="password"
+              name="name"
+              type="text"
+              class="form-control"
+              placeholder="請輸入姓名"
+              autocomplete="current-password"
+              required
+            >
+          </div>
+          <div class="d-flex flex-column align-items-start justify-content-start mt-5">
+            <label for="password">手機</label>
+            <input
+              id="password"
+              v-model="password"
+              name="password"
+              type="password"
+              class="form-control"
+              placeholder="請輸入密碼"
+              autocomplete="current-password"
+              required
+            >
+          </div>
+        </template>
+        <!-- forgot password only for sign in -->
+        <div
+          v-if="isSignUp === false"
+          class="forgot-password mt-6"
+        >
+          忘記密碼？
+        </div>
+        <!-- switch signin or signup btn -->
+        <button
+          v-if="isSignUp === false"
+          class="signIn-btn"
+          type="submit"
+          @click="toggleSignin"
+        >
+          登入
+        </button>
+        <!-- <router-link
+          v-if="isSignup === false"
+          class="signIn-btn"
+          to="/user"
+        >
+          登入
+        </router-link> -->
+        <button
+          v-else
+          class="signIn-btn"
+          type="submit"
+        >
+          注冊
+        </button>
+      </div>
+      <transition name="fade-2">
+        <div
+          v-if="isSignUp === false"
+          class="quick-login"
+        >
+          <div class="horizon horizon-one" />
+          快速登入
+          <div class="horizon horizon-two" />
+        </div>
+      </transition>
+      <!-- 第三方登入 -->
+      <transition name="fade-2">
+        <div
+          v-if="isSignUp === false"
+          class="btn line-login d-flex"
+          @click="lineLogin"
+        >
+          <img
+            src="../../public/line_88.png"
+            alt=""
+            class="line-logo"
+          >
+          <div class="vertical" />
+          <p>Line綁定登入</p>
+        </div>
+      </transition>
+      <!-- form-footer -->
+      <div
+        v-if="isSignUp === false"
+        class="form-footer"
+        @click="toggleSignup"
+      >
+        還沒有會員嗎？<strong>註冊新帳號</strong>
+      </div>
+      <div
+        v-else
+        class="form-footer"
+        @click="toggleSignup"
+      >
+        已經有帳號？<strong>登入會員</strong>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
-// seed data
-const dummyUser = {
-  currentUser: {
-    id: 1,
-    name: '管理者',
-    email: 'root@example.com',
-    isAdmin: false
-  },
-  isAuthenticated: false
-}
-
+import authorizationAPI from '../../apis/authorization'
+import Swal from 'sweetalert2'
 export default {
   // Vue 會在沒有資料時使用此預設值
   data () {
     return {
-      isSignin: false,
-      isSignup: false,
-      currentUser: {
-        id: -1,
-        name: '',
-        email: '',
-        image: '',
-        isAdmin: false
-      },
-      isAuthenticated: false
+      isSignIn: false,
+      isSignUp: false,
+      isProcessing: false
     }
   },
   created () {
     this.fetchUser()
   },
-  methods: { // 把dummyUser 蓋過 currentUser
-    fetchUser () {
-      this.currentUser = {
-        ...this.currentUser,
-        ...dummyUser.currentUser
-      }
-      this.isAuthenticated = dummyUser.isAuthenticated
-    },
+  methods: {
     toggleSignin () {
-      if (this.isSignin === false) {
-        this.isSignin = true
-      } else if (this.isSignin === true) {
-        this.isSignin = false
-      }
+      this.$emit('after-toggleSignin')
     },
     toggleSignup () {
-      if (this.isSignup === false) {
-        this.isSignup = true
-      } else if (this.isSignup === true) {
-        this.isSignup = false
+      if (this.isSignUp === false) {
+        this.isSignUp = true
+      } else if (this.isSignUp === true) {
+        this.isSignUp = false
       }
     },
     lineLogin () {
@@ -307,6 +226,37 @@ export default {
       link += '&state=123456789'
       link += '&scope=openid%20profile'
       window.location.href = link
+    },
+    async handleSubmit () {
+      try {
+        if (!this.email || !this.password) {
+          Swal.fire({
+            icon: 'warning',
+            title: '請輸入Email & password'
+          })
+          return
+        }
+        this.isProcessing = true
+        const response = await authorizationAPI.signIn({
+          email: this.email,
+          password: this.password
+        })
+        const { data } = response
+        if (data.status !== 'success') {
+          throw new Error(data.message)
+        }
+        localStorage.setItem('token', data.token)
+        // 透過setCurrentUser的方法把使用者資料儲存到vuex的state中
+        this.$store.commit('setCurrentUser', data.user)
+        this.$router.push('/restaurants')
+      } catch (error) {
+        this.isProcessing = false
+        // console.log(error)
+        Swal.fire({
+          icon: 'warning',
+          title: 'wrong accountnumber or password'
+        })
+      }
     }
   }
 }
