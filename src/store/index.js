@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import userAPI from '../../apis/user'
+import Swal from 'sweetalert2'
 
 Vue.use(Vuex)
 
@@ -39,9 +40,12 @@ export default new Vuex.Store({
         commit('setCurrentUser', {
           id, name, email, image, isAdmin
         })
-        console.log('data', data)
+        // console.log('data', data)
       } catch (error) {
-        console.error(error.message)
+        Swal.fire({
+          icon: 'warning',
+          title: error.message
+        })
       }
     }
   },
